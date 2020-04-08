@@ -20,7 +20,10 @@ import {
   Input,
   Table,
   TableColumn,
-  Loading
+  Loading,
+  Carousel,
+  CarouselItem,
+  Image
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -40,6 +43,9 @@ Vue.use(Input);
 Vue.use(Table);
 Vue.use(TableColumn);
 Vue.use(Loading);
+Vue.use(CarouselItem);
+Vue.use(Carousel);
+Vue.use(Image);
 Vue.config.productionTip = false
 
 

@@ -4,18 +4,12 @@
         <section id="main-content">
             <section class="wrapper">
                 <div class="row">
-                    <div v-loading="loading" class="main-chart">
+                    <div v-loading="loading" class="main-container">
                         <!--CUSTOM CHART START -->
                         <div>
-                            <h3>Historical data for {{country}}</h3>
+                            <h3>Latest Information of {{country}}</h3>
                         </div>
-                        <el-table
-                            stripe
-                            fit
-                            fixed="left"
-                            :data="arr"
-                            style="width: 100%"
-                        >
+                        <el-table stripe fit fixed="left" :data="arr" style="width: 100%">
                             <el-table-column label="Record date" prop="record_date"></el-table-column>
                             <el-table-column label="Total cases" prop="total_cases"></el-table-column>
                             <el-table-column label="New cases" prop="new_cases"></el-table-column>
@@ -41,47 +35,42 @@
 <script>
 /* eslint-disabled */
 export default {
-    name: "ByDate",
+    name: "ByLatest",
     data() {
         return {
             arr: [],
             country: "",
+            urlImage: "",
+            tips: false,
             loading: false,
-            api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
-        };
-    },
-    methods: {
-        getCasesByCountry(country) {
-            this.makeRequest(
-                "cases_by_particular_country.php?country=" + country
-            );
-        },
-
-        makeRequest(path) {
-            this.loading = true;
-            var headers = {
+            api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/",
+            headers: {
                 "X-RapidAPI-Key":
                     "d5a7a67247msh00ac5e296fd8222p1fea22jsnf4c137fa39f5",
                 "X-RapidAPI-Host": "coronavirus-monitor.p.rapidapi.com",
-                "content-type": "text/html; charset=UTF-8",
-                "x-rapidapi-region": "AWS - ap-southeast-1",
                 "x-rapidapi-version": "1.1.0",
                 "transfer-encoding": "chunked",
-                date: "Tue, 07 Apr 2020 07:12:18 GMT",
-                server: "RapidAPI-1.1.0",
                 vary: "Accept-Encoding",
                 connection: "Close"
-            };
+            }
+        };
+    },
+    methods: {
+        getLAtestByCountry(country) {
+            this.makeRequest("latest_stat_by_country.php?country=" + country);
+        },
+        makeRequest(path) {
+            this.loading = true;
             let api = this.api + path;
             fetch(api, {
                 method: "get",
-                headers: headers
+                headers: this.headers
             })
                 .then(response => {
                     return response.json();
                 })
                 .then(json => {
-                    this.arr = json.stat_by_country.reverse();
+                    this.arr = json.latest_stat_by_country;
                     this.country = json.country;
                     this.loading = false;
                 })
@@ -92,7 +81,9 @@ export default {
         }
     },
     mounted() {
-        this.getCasesByCountry(this.$route.params.country);
+        this.getLAtestByCountry(this.$route.params.country);
     }
 };
 </script>
+<style scoped>
+</style>

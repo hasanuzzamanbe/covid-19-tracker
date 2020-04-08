@@ -32,25 +32,21 @@
                         <!-- sidebar menu start-->
                         <ul class="sidebar-menu" id="nav-accordion">
                             <p class="centered">
-                                <a href="#">
-                                    <img
-                                        src="../src/assets/logo.png"
-                                        class="img-circle"
-                                        width="80"
-                                    />
+                                <a href="#" @click="goToHome">
+                                    <img src="../src/assets/logo.png" class="img-circle" width="80" />
                                 </a>
                             </p>
                             <h5 class="centered">COVID-19</h5>
                             <li class="mt">
-                                <a @click="goToHome('/')" class="active">
+                                <a @click="goToHome" class="active">
                                     <i class="fa fa-dashboard"></i>
-                                    <span>Dashboard</span>
+                                    <span>AFFECTED COUNTRIES</span>
                                 </a>
                             </li>
                             <li class="sub-menu">
-                                <a @click="goToHome('/by-date')" href="javascript:;">
+                                <a @click="getInstruction()" href="javascript:;">
                                     <i class="fa fa-desktop"></i>
-                                    <span>UI Elements</span>
+                                    <span>Get A Tips from WHO</span>
                                 </a>
                             </li>
                         </ul>
@@ -58,7 +54,12 @@
                     </div>
                 </aside>
                 <!--sidebar end-->
-
+                <el-dialog :visible.sync="tips">
+                    <div>
+                        <el-image v-loading="loading" style="width: 100%; height: 100%" :src="urlImage"></el-image>
+                        <el-button v-loading="loading" @click="getInstruction">Show More</el-button>
+                    </div>
+                </el-dialog>
                 <!-- main-content -->
                 <router-view></router-view>
                 <!--main content end-->
@@ -78,11 +79,47 @@
 export default {
     name: "App",
     data() {
-        return {};
+        return {
+            tips: false,
+            urlImage: "",
+            loading: false,
+            insApi:
+                "https://coronavirus-monitor.p.rapidapi.com/coronavirus/random_masks_usage_instructions.php",
+            headers: {
+                "X-RapidAPI-Key":
+                    "d5a7a67247msh00ac5e296fd8222p1fea22jsnf4c137fa39f5",
+                "X-RapidAPI-Host": "coronavirus-monitor.p.rapidapi.com",
+                "x-rapidapi-version": "1.1.0",
+                "transfer-encoding": "chunked",
+                vary: "Accept-Encoding",
+                connection: "Close"
+            }
+        };
     },
     methods: {
-        goToHome(path) {
-            this.$router.push(path);
+        goToHome() {
+            const path = `/`;
+            if (this.$route.path !== path) this.$router.push(path);
+        },
+        getInstruction() {
+            this.loading = true;
+            this.tips = true;
+            fetch(this.insApi, {
+                method: "get",
+                headers: this.headers
+            })
+                .then(response => {
+                    return response.blob();
+                })
+                .then(data => {
+                    const urlCreator = window.URL || window.webkitURL;
+                    this.urlImage = urlCreator.createObjectURL(data);
+                    this.loading = false;
+                })
+                .catch(function(error) {
+                    console.log("Request failed", error);
+                    this.loading = false;
+                });
         }
     }
 };

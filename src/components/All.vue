@@ -9,9 +9,6 @@
                         <div>
                             <h3>All Affected Countries</h3>
                         </div>
-                        <!-- <el-button @click="getAllCountry">get all country</el-button> -->
-                        <!-- <button @click="getlatestByCountry">latest by country</button> -->
-                        <!-- <button @click="getCasesByCountry">latest by country</button> -->
                         <el-table
                             stripe
                             fit
@@ -58,9 +55,6 @@
                             </el-table-column>
                         </el-table>
                     </div>
-                    <!-- <el-dialog width="270px" :visible.sync="loading">
-                        <img src="../assets/loading.png" />
-                    </el-dialog>-->
                 </div>
                 <!-- /row -->
             </section>
@@ -83,14 +77,19 @@ export default {
     },
     methods: {
         getlatestByCountry(country) {
-            let path = "latest_stat_by_country.php?country=" + country;
-            this.makeRequest(path);
+            this.$router.push({
+                name: "ByLatest",
+                params: { country: country }
+            });
         },
         getAllCountry() {
             this.makeRequest("cases_by_country.php");
         },
-        getCasesByCountry() {
-            this.$router.push('/by-date');
+        getCasesByCountry(country) {
+            this.$router.push({
+                name: "ByDate",
+                params: { country: country }
+            });
         },
 
         makeRequest(path) {
@@ -100,10 +99,6 @@ export default {
                     "d5a7a67247msh00ac5e296fd8222p1fea22jsnf4c137fa39f5",
                 "X-RapidAPI-Host": "coronavirus-monitor.p.rapidapi.com",
                 "content-type": "text/html; charset=UTF-8",
-                "x-rapidapi-region": "AWS - ap-southeast-1",
-                "x-rapidapi-version": "1.1.0",
-                "transfer-encoding": "chunked",
-                date: "Tue, 07 Apr 2020 07:12:18 GMT",
                 server: "RapidAPI-1.1.0",
                 vary: "Accept-Encoding",
                 connection: "Close"
@@ -117,13 +112,7 @@ export default {
                     return response.json();
                 })
                 .then(json => {
-                    if (json.countries_stat) {
-                        this.arr = json.countries_stat;
-                    } else if (json.latest_stat_by_country) {
-                        this.arr = json.latest_stat_by_country;
-                    } else {
-                        this.arr = json.stat_by_country;
-                    }
+                    this.arr = json.countries_stat;
                     this.loading = false;
                 })
                 .catch(function(error) {
