@@ -16,7 +16,7 @@
                             :data="arr"
                             style="width: 100%"
                         >
-                            <el-table-column label="Record date" prop="record_date"></el-table-column>
+                            <el-table-column fixed label="Record date" prop="record_date"></el-table-column>
                             <el-table-column label="Total cases" prop="total_cases"></el-table-column>
                             <el-table-column label="New cases" prop="new_cases"></el-table-column>
                             <el-table-column label="Active cases" prop="active_cases"></el-table-column>

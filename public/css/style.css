@@ -588,7 +588,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .site-footer {
     background: #4ECDC4;
     color: #fff;
-    padding: 15px 0;
+    padding: 10px 0;
 }
 
 .site-footer p {
@@ -622,8 +622,7 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 /* Copyrights */
 
 #copyrights {
-  background: #222222;
-  padding: 20px 0;
+  padding: 6px 0;
   text-align: center;
 }
 
@@ -633,5 +632,5 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 #copyrights a {
-  color: #fff;
+  color: #fff !important;
 }

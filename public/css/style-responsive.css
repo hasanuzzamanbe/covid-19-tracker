@@ -15,7 +15,9 @@
         z-index: 1001;
     }
 
-
+    .el-table {
+        margin-top: 158px;
+    }
     /* body container */
     #main-content {
         margin: 0px!important;
@@ -100,7 +102,6 @@
     }
 
 }
-
 
 @media (max-width:320px) {
 

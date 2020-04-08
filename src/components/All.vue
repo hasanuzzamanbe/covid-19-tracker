@@ -4,19 +4,19 @@
         <section id="main-content">
             <section class="wrapper">
                 <div class="row">
-                    <div v-loading="loading" class="main-chart">
+                    <div v-loading="loading">
                         <!--CUSTOM CHART START -->
                         <div>
                             <h3>All Affected Countries</h3>
                         </div>
                         <el-table
                             stripe
-                            fit
+                            height="900"
                             fixed="left"
                             :data="arr.filter(item => !search || item.country_name.toLowerCase().includes(search.toLowerCase()))"
                             style="width: 100%"
                         >
-                            <el-table-column label="Country name" prop="country_name"></el-table-column>
+                            <el-table-column label="Country" prop="country_name"></el-table-column>
                             <el-table-column label="Cases" prop="cases"></el-table-column>
                             <el-table-column label="Total Recovered" prop="total_recovered"></el-table-column>
                             <el-table-column label="Cases" prop="cases"></el-table-column>
