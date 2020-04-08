@@ -3,19 +3,13 @@
         <!-- main-content -->
         <section id="main-content">
             <section class="wrapper">
-                <div class="row">
-                    <div v-loading="loading" class="main-chart">
+                <div class="row all-data-row-wrapper">
+                    <div v-if="!loading" class="main-chart">
                         <!--CUSTOM CHART START -->
                         <div>
-                            <h3>Historical data for {{country}}</h3>
+                            <h3 class="fantasy">Historical data for {{country}}</h3>
                         </div>
-                        <el-table
-                            stripe
-                            fit
-                            fixed="left"
-                            :data="arr"
-                            style="width: 100%"
-                        >
+                        <el-table stripe fit fixed="left" :data="arr" style="width: 100%">
                             <el-table-column fixed label="Record date" prop="record_date"></el-table-column>
                             <el-table-column label="Total cases" prop="total_cases"></el-table-column>
                             <el-table-column label="New cases" prop="new_cases"></el-table-column>
@@ -29,6 +23,16 @@
                                 prop="total_cases_per_1m_population"
                             ></el-table-column>
                         </el-table>
+                    </div>
+                    <div v-else>
+                        <img
+                            style="border: 1px solid #4ecdc4; border-radius: 91px;"
+                            src="../assets/loadinghand.png"
+                            alt="Loading.."
+                        />
+                        <h4>Wait, first wash your hand...</h4>
+                        <br/>
+                        <img src="../assets/ajax-loader.gif"/>
                     </div>
                 </div>
                 <!-- /row -->

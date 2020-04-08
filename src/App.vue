@@ -55,8 +55,8 @@
             <!--sidebar end-->
             <el-dialog :visible.sync="tips">
                 <div>
-                    <el-image v-loading="loading" style="width: 80%; height: 100%" :src="urlImage"></el-image>
-
+                    <el-image v-if="!loading" style="width: 80%; height: 100%" :src="urlImage"></el-image>
+                    <img v-else src="./assets/ajax-loader.gif" />
                     <br />
                     <el-button v-loading="loading" @click="getInstruction">Show More</el-button>
                 </div>

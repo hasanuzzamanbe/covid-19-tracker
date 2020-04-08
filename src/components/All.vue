@@ -4,11 +4,28 @@
         <section id="main-content">
             <section class="wrapper">
                 <div class="row">
-                    <div v-loading="loading">
+                    <div class="all-data-row-wrapper" v-if="!loading">
                         <!--CUSTOM CHART START -->
-                        <div>
-                            <h3>All Affected Countries</h3>
-                        </div>
+                        <el-header>
+                            <el-col :span="12">
+                                <div>
+                                    <h3 class="fantasy">All Affected Countries</h3>
+                                </div>
+                            </el-col>
+                            <el-row>
+                               
+                                <el-col :sm="12" :md="12">
+                                    <el-input
+                                        v-model="search"
+                                        size="medium"
+                                        placeholder="Type country name to search"
+                                    >
+                                        <el-button slot="append" icon="el-icon-search"></el-button>
+                                    </el-input>
+                                </el-col>
+                            </el-row>
+                        </el-header>
+
                         <el-table
                             stripe
                             height="900"
@@ -29,7 +46,7 @@
                                 label="cases 1m/population"
                                 prop="total_cases_per_1m_population"
                             ></el-table-column>
-                            <el-table-column align="right">
+                            <el-table-column align="right" fixed="right">
                                 <!-- eslint-disable-next-line -->
                                 <template slot="header" slot-scope="scope">
                                     <el-input
@@ -54,6 +71,9 @@
                                 </template>
                             </el-table-column>
                         </el-table>
+                    </div>
+                    <div v-else>
+                        <img src="../assets/ajax-loader.gif" />
                     </div>
                 </div>
                 <!-- /row -->

@@ -3,11 +3,11 @@
         <!-- main-content -->
         <section id="main-content">
             <section class="wrapper">
-                <div class="row">
+                <div class="row all-data-row-wrapper">
                     <div v-loading="loading" class="main-container">
                         <!--CUSTOM CHART START -->
                         <div>
-                            <h3>Latest Information of {{country}}</h3>
+                            <h3 class="fantasy">Latest Information of {{country}}</h3>
                         </div>
                         <el-table stripe fit fixed="left" :data="arr" style="width: 100%">
                             <el-table-column label="Record date" prop="record_date"></el-table-column>

@@ -539,11 +539,6 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 }
 
 
-
-
-
-
-/* /j */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
     /* Safari and Chrome */
     .panel-footer.revenue-foot {
@@ -633,4 +628,8 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 
 #copyrights a {
   color: #fff !important;
+}
+
+.fantasy {
+    font-family: fantasy;
 }
