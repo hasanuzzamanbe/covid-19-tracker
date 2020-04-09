@@ -160,6 +160,7 @@ export default {
                 .then(response => {
                     if (response.country && response.country !== "") {
                         this.getLAtestByCountry(response.country);
+                        console.log(response.country)
                     }
                 })
                 .catch((data, status) => {
@@ -177,6 +178,7 @@ export default {
                 })
                 .then(json => {
                     this.lastUpdate = json.latest_stat_by_country[0];
+                    console.log(this.lastUpdate)
                 })
                 .catch(function(error) {
                     console.log("Request failed", error);
