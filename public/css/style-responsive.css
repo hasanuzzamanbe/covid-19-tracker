@@ -4,7 +4,9 @@
     .header {
         position: absolute;
     }
-
+.sidebar-latest {
+    display:none;
+}
     /*sidebar*/
 
     #sidebar {

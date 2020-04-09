@@ -643,3 +643,6 @@ span.info-title {
 .info-response {
     font-family: monospace;
 }
+span.info-title-white {
+    color: white;
+}

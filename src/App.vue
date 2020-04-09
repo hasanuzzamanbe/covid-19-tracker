@@ -60,6 +60,40 @@
                         </li>
                     </ul>
                     <!-- sidebar menu end-->
+
+                    <div class="sidebar-latest" v-if="lastUpdate">
+                        <h3 style="color:white;">Your Country Latest</h3>
+                        <el-col class="info-response">
+                            <hr style="width:30%;"/>
+                            <span class="info-title-white">Country:</span>
+                            <span class="info-value">{{lastUpdate.country_name}}</span>
+                            <br />
+                            <span class="info-title-white">Total Cases:</span>
+                            <span class="info-value">{{lastUpdate.total_cases}}</span>
+                            <br />
+                            <span class="info-title-white">New Cases:</span>
+                            <span class="info-value">{{lastUpdate.new_cases || 'update soon'}}</span>
+                            <br />
+                            <span class="info-title-white">Active Cases:</span>
+                            <span class="info-value">{{lastUpdate.active_cases}}</span>
+                            <br />
+                            <span class="info-title-white">Total Death:</span>
+                            <span class="info-value">{{lastUpdate.total_deaths}}</span>
+                            <br />
+                            <span class="info-title-white">New Death:</span>
+                            <span class="info-value">{{lastUpdate.new_deaths || 'update soon'}}</span>
+                            <br />
+                            <span class="info-title-white">Recovered:</span>
+                            <span class="info-value">{{lastUpdate.total_recovered}}</span>
+                            <br />
+                            <span class="info-title-white">Criticals:</span>
+                            <span class="info-value">{{lastUpdate.serious_critical}}</span>
+                            <br />
+                            <span class="info-title-white">Cases per 1M:</span>
+                            <span class="info-value">{{lastUpdate.total_cases_per1m}}</span>
+                            <br />
+                        </el-col>
+                    </div>
                 </div>
             </aside>
             <!--sidebar end-->
@@ -94,9 +128,10 @@ export default {
         return {
             tips: false,
             urlImage: "",
+            country: null,
             loading: false,
-            insApi:
-                "https://coronavirus-monitor.p.rapidapi.com/coronavirus/random_masks_usage_instructions.php",
+            lastUpdate: null,
+            api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/",
             headers: {
                 "X-RapidAPI-Key":
                     "d5a7a67247msh00ac5e296fd8222p1fea22jsnf4c137fa39f5",
@@ -117,10 +152,39 @@ export default {
             if (this.$route.path !== "/my-country")
                 this.$router.push("my-country");
         },
+        getIpLocation() {
+            fetch("https://extreme-ip-lookup.com/json/")
+                .then(res => res.json())
+                .then(response => {
+                    if (response.country && response.country !== "") {
+                        this.getLAtestByCountry(response.country);
+                    }
+                })
+                .catch((data, status) => {
+                    console.log("Request failed", data, status);
+                });
+        },
+        getLAtestByCountry(country) {
+            let path = "latest_stat_by_country.php?country=" + country;
+            fetch(this.api + path, {
+                method: "get",
+                headers: this.headers
+            })
+                .then(response => {
+                    return response.json();
+                })
+                .then(json => {
+                    this.lastUpdate = json.latest_stat_by_country[0];
+                })
+                .catch(function(error) {
+                    console.log("Request failed", error);
+                });
+        },
         getInstruction() {
             this.loading = true;
             this.tips = true;
-            fetch(this.insApi, {
+            let insApi = this.api + "random_masks_usage_instructions.php";
+            fetch(insApi, {
                 method: "get",
                 headers: this.headers
             })
@@ -137,6 +201,9 @@ export default {
                     this.loading = false;
                 });
         }
+    },
+    mounted() {
+        this.getIpLocation();
     }
 };
 </script>
