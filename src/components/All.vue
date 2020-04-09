@@ -33,14 +33,13 @@
                             style="width: 100%"
                         >
                             <el-table-column label="Country" prop="country_name"></el-table-column>
-                            <el-table-column label="Cases" prop="cases"></el-table-column>
-                            <el-table-column label="Total Recovered" prop="total_recovered"></el-table-column>
-                            <el-table-column label="Cases" prop="cases"></el-table-column>
-                            <el-table-column label="New Deaths" prop="new_deaths"></el-table-column>
-                            <el-table-column label="New Cases" prop="new_cases"></el-table-column>
-                            <el-table-column label="Serious critical" prop="serious_critical"></el-table-column>
-                            <el-table-column label="New Cases" prop="new_cases"></el-table-column>
-                            <el-table-column label="Active cases" prop="active_cases"></el-table-column>
+                            <el-table-column sortable label="Cases" prop="cases"></el-table-column>
+                            <el-table-column sortable label="Total Recovered" prop="total_recovered"></el-table-column>
+                            <el-table-column sortable label="Active cases" prop="active_cases"></el-table-column>
+                            <el-table-column sortable label="Deaths" prop="deaths"></el-table-column>
+                            <el-table-column sortable label="New Deaths" prop="new_deaths"></el-table-column>
+                            <el-table-column sortable label="New Cases" prop="new_cases"></el-table-column>
+                            <el-table-column  label="Serious critical" prop="serious_critical"></el-table-column>
                             <el-table-column
                                 label="cases 1m/population"
                                 prop="total_cases_per_1m_population"
@@ -131,7 +130,10 @@ export default {
                     return response.json();
                 })
                 .then(json => {
-                    this.arr = json.countries_stat;
+                    this.arr = json.countries_stat.filter(data => {
+                        return data.country_name !== "";
+                    });
+                    // console.log(this.arr)
                     this.loading = false;
                 })
                 .catch(function(error) {

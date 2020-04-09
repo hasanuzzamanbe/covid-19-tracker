@@ -20,17 +20,13 @@
                         <!--CUSTOM CHART START -->
                         <el-table stripe fit fixed="left" :data="arr" style="width: 100%">
                             <el-table-column fixed label="Record date" prop="record_date"></el-table-column>
-                            <el-table-column label="Total cases" prop="total_cases"></el-table-column>
-                            <el-table-column label="New cases" prop="new_cases"></el-table-column>
-                            <el-table-column label="Active cases" prop="active_cases"></el-table-column>
-                            <el-table-column label="total_deaths" prop="total_deaths"></el-table-column>
-                            <el-table-column label="New deaths" prop="new_deaths"></el-table-column>
-                            <el-table-column label="Total recovered" prop="total_recovered"></el-table-column>
-                            <el-table-column label="Cases per 1m" prop="total_cases_per1m"></el-table-column>
-                            <el-table-column
-                                label="cases 1m/population"
-                                prop="total_cases_per_1m_population"
-                            ></el-table-column>
+                            <el-table-column sortable label="Total cases" prop="total_cases"></el-table-column>
+                            <el-table-column sortable label="New cases" prop="new_cases"></el-table-column>
+                            <el-table-column sortable label="Active cases" prop="active_cases"></el-table-column>
+                            <el-table-column sortable label="total_deaths" prop="total_deaths"></el-table-column>
+                            <el-table-column sortable label="New deaths" prop="new_deaths"></el-table-column>
+                            <el-table-column sortable label="Total recovered" prop="total_recovered"></el-table-column>
+                            <el-table-column sortable label="Cases per 1m" prop="total_cases_per1m"></el-table-column>
                         </el-table>
                     </div>
                     <div v-else>
