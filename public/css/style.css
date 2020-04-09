@@ -633,3 +633,13 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 .fantasy {
     font-family: fantasy;
 }
+
+span.info-value {
+    color: steelblue;
+}
+span.info-title {
+    color: black;
+}
+.info-response {
+    font-family: monospace;
+}

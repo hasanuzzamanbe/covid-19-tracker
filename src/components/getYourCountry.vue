@@ -11,10 +11,10 @@
                                     <h3 class="fantasy">Historical data for {{country}}</h3>
                                 </div>
                             </el-col>
-                            <el-col :sm="12" :md="12">
-                                Total data: {{arr.length}}
-                                Country: {{country}}
-                                Last record: {{arr[0]['record_date']}}
+                            <el-col class="info-response" :sm="12" :md="12">
+                                <span class="info-title">Total data:</span><span class="info-value">{{arr.length}}</span><br/>
+                                 <span class="info-title">Country:</span> <span class="info-value">{{country}}</span><br/>
+                                 <span v-if="arr.length !== 0"><span class="info-title">Last record:</span><span class="info-value"> {{ arr[0]['record_date'] }}</span></span>
                             </el-col>
                         </el-row>
                         <!--CUSTOM CHART START -->
