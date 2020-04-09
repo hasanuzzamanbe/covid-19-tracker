@@ -37,9 +37,19 @@
                         </p>
                         <h5 class="centered">COVID-19</h5>
                         <li class="mt">
-                            <a @click="goToHome" class="active">
+                            <a @click="goToHome" :class="{active: this.$route.path== '/'}">
                                 <i class="fa fa-dashboard"></i>
-                                <span>AFFECTED COUNTRIES</span>
+                                <span>Affected Countries</span>
+                            </a>
+                        </li>
+                        <li class="sub-menu">
+                            <a
+                                @click="showMyCountryData()"
+                                :class="{active: this.$route.path== '/my-country'}"
+                                href="javascript:;"
+                            >
+                                <i class="fa fa-desktop"></i>
+                                <span>Show My country details</span>
                             </a>
                         </li>
                         <li class="sub-menu">
@@ -102,6 +112,10 @@ export default {
         goToHome() {
             const path = `/`;
             if (this.$route.path !== path) this.$router.push(path);
+        },
+        showMyCountryData() {
+            if (this.$route.path !== "/my-country")
+                this.$router.push("my-country");
         },
         getInstruction() {
             this.loading = true;

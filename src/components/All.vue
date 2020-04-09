@@ -13,7 +13,6 @@
                                 </div>
                             </el-col>
                             <el-row>
-                               
                                 <el-col :sm="12" :md="12">
                                     <el-input
                                         v-model="search"
