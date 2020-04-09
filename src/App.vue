@@ -139,10 +139,6 @@ export default {
                 "X-RapidAPI-Key":
                     "d5a7a67247msh00ac5e296fd8222p1fea22jsnf4c137fa39f5",
                 "X-RapidAPI-Host": "coronavirus-monitor.p.rapidapi.com",
-                "x-rapidapi-version": "1.1.0",
-                "transfer-encoding": "chunked",
-                vary: "Accept-Encoding",
-                connection: "Close"
             }
         };
     },

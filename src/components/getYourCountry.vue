@@ -77,14 +77,7 @@ export default {
                 "X-RapidAPI-Key":
                     "d5a7a67247msh00ac5e296fd8222p1fea22jsnf4c137fa39f5",
                 "X-RapidAPI-Host": "coronavirus-monitor.p.rapidapi.com",
-                "content-type": "text/html; charset=UTF-8",
-                "x-rapidapi-region": "AWS - ap-southeast-1",
-                "x-rapidapi-version": "1.1.0",
-                "transfer-encoding": "chunked",
-                date: "Tue, 07 Apr 2020 07:12:18 GMT",
-                server: "RapidAPI-1.1.0",
-                vary: "Accept-Encoding",
-                connection: "Close"
+                "content-type": "text/html; charset=UTF-8"
             };
             let api = this.api + path;
             fetch(api, {
