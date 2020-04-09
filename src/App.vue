@@ -129,6 +129,7 @@ export default {
         return {
             tips: false,
             urlImage: "",
+            flag: null,
             time: {},
             country: null,
             loading: false,
@@ -155,17 +156,22 @@ export default {
                 this.$router.push("my-country");
         },
         getIpLocation() {
-            fetch("https://extreme-ip-lookup.com/json/")
+            if(window.myCountry) {
+                this.getLAtestByCountry(window.myCountry);
+            }else {
+                fetch("http://api.ipstack.com/103.120.201.205?access_key=1d53a3432210ca485b5726bf10c21859")
                 .then(res => res.json())
                 .then(response => {
-                    if (response.country && response.country !== "") {
-                        this.getLAtestByCountry(response.country);
-                        console.log(response.country)
+                    if (response.country_name && response.country_name !== "") {
+                        this.getLAtestByCountry(response.country_name);
+                        window.myCountry = response.country_name;
                     }
                 })
                 .catch((data, status) => {
                     console.log("Request failed", data, status);
                 });
+            }
+            
         },
         getLAtestByCountry(country) {
             let path = "latest_stat_by_country.php?country=" + country;
@@ -178,7 +184,6 @@ export default {
                 })
                 .then(json => {
                     this.lastUpdate = json.latest_stat_by_country[0];
-                    console.log(this.lastUpdate)
                 })
                 .catch(function(error) {
                     console.log("Request failed", error);

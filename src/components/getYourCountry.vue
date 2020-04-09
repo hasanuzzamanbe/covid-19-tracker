@@ -65,9 +65,9 @@ export default {
         };
     },
     methods: {
-        getCasesByCountry() {
+        getCasesByCountry(country) {
             this.makeRequest(
-                "cases_by_particular_country.php?country=" + this.country
+                "cases_by_particular_country.php?country=" + country
             );
         },
 
@@ -105,19 +105,25 @@ export default {
                 });
         },
         getIpLocation() {
-            fetch("https://extreme-ip-lookup.com/json/")
+            if(window.myCountry) {
+                this.getCasesByCountry(window.myCountry)
+                console.log(window.myCountry, 'yy')
+            }else {
+                fetch("http://api.ipstack.com/103.120.201.205?access_key=1d53a3432210ca485b5726bf10c21859")
                 .then(res => res.json())
                 .then(response => {
-                    if (response.country && response.country !== "") {
-                        this.country = response.country;
+                    if (response.country_name && response.country_name !== "") {
+                        this.country = response.country_name;
                     } else {
                         this.country = "Bangladesh";
                     }
-                    this.getCasesByCountry();
+                    this.getCasesByCountry(this.country);
                 })
                 .catch((data, status) => {
                     console.log("Request failed", data, status);
                 });
+            }
+            
         }
     },
     mounted() {
