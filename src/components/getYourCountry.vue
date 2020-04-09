@@ -107,9 +107,8 @@ export default {
         getIpLocation() {
             if(window.myCountry) {
                 this.getCasesByCountry(window.myCountry)
-                console.log(window.myCountry, 'yy')
             }else {
-                fetch("http://api.ipstack.com/103.120.201.205?access_key=1d53a3432210ca485b5726bf10c21859")
+                fetch("https://api.ipgeolocation.io/ipgeo?apiKey=b8ee58e19922458ba3fe3081e146103f")
                 .then(res => res.json())
                 .then(response => {
                     if (response.country_name && response.country_name !== "") {

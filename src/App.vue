@@ -63,7 +63,7 @@
                     <!-- sidebar menu end-->
 
                     <div class="sidebar-latest" v-if="lastUpdate">
-                        <h3 style="color:white;">Your Country Latest</h3>
+                        <h3 style="color:white;">Your Country Latest</h3> <img v-if="countryflag" width="70px" :src="countryflag"/>
                         <el-col class="info-response">
                             <hr style="width:30%;" />
                             <span class="info-title-white">Country:</span>
@@ -129,8 +129,8 @@ export default {
         return {
             tips: false,
             urlImage: "",
-            flag: null,
             time: {},
+            countryflag: null,
             country: null,
             loading: false,
             lastUpdate: null,
@@ -159,12 +159,13 @@ export default {
             if(window.myCountry) {
                 this.getLAtestByCountry(window.myCountry);
             }else {
-                fetch("http://api.ipstack.com/103.120.201.205?access_key=1d53a3432210ca485b5726bf10c21859")
+                fetch("https://api.ipgeolocation.io/ipgeo?apiKey=b8ee58e19922458ba3fe3081e146103f")
                 .then(res => res.json())
                 .then(response => {
                     if (response.country_name && response.country_name !== "") {
                         this.getLAtestByCountry(response.country_name);
                         window.myCountry = response.country_name;
+                        window.countryflag = this.countryflag = response.country_flag;
                     }
                 })
                 .catch((data, status) => {
