@@ -39,7 +39,7 @@
                             src="../assets/loadinghand.png"
                             alt="Loading.."
                         />
-                        <h4>Wait, first wash your hand...</h4>
+                        <h4>Wait, first wash your hands...</h4>
                         <br />
                         <img src="../assets/ajax-loader.gif" />
                     </div>
