@@ -3,6 +3,7 @@
         <div id="main-wrapper">
             <!--header start-->
             <header class="header black-bg">
+                <span id="clock" class="goright">{{this.time.hour+':'+this.time.min+':'+ this.time.sec}}</span>
                 <div class="sidebar-toggle-box">
                     <div
                         class="fa fa-bars tooltips"
@@ -64,7 +65,7 @@
                     <div class="sidebar-latest" v-if="lastUpdate">
                         <h3 style="color:white;">Your Country Latest</h3>
                         <el-col class="info-response">
-                            <hr style="width:30%;"/>
+                            <hr style="width:30%;" />
                             <span class="info-title-white">Country:</span>
                             <span class="info-value">{{lastUpdate.country_name}}</span>
                             <br />
@@ -100,7 +101,7 @@
             <el-dialog :visible.sync="tips">
                 <div>
                     <el-image v-if="!loading" style="width: 80%; height: 100%" :src="urlImage"></el-image>
-                    <img v-else src="./assets/ajax-loader.gif" />
+                    <img v-else width="100%" src="./assets/ajax-loader.gif" />
                     <br />
                     <el-button v-loading="loading" @click="getInstruction">Show More</el-button>
                 </div>
@@ -128,6 +129,7 @@ export default {
         return {
             tips: false,
             urlImage: "",
+            time: {},
             country: null,
             loading: false,
             lastUpdate: null,
@@ -200,10 +202,25 @@ export default {
                     console.log("Request failed", error);
                     this.loading = false;
                 });
+        },
+        currentTime() {
+            var date = new Date(); /* creating object of Date class */
+            var hour = date.getHours();
+            var min = date.getMinutes();
+            var sec = date.getSeconds();
+            this.time = {
+                hour,
+                min,
+                sec,
+            }
+            setTimeout(()=> {
+                this.currentTime();
+            }, 1000); /* setting timer */
         }
     },
     mounted() {
         this.getIpLocation();
+        this.currentTime();
     }
 };
 </script>
