@@ -119,6 +119,7 @@ export default {
                     this.getCasesByCountry(this.country);
                 })
                 .catch((data, status) => {
+                    this.getCasesByCountry('Bangladesh');
                     console.log("Request failed", data, status);
                 });
             }

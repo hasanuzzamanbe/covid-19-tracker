@@ -169,6 +169,8 @@ export default {
                     }
                 })
                 .catch((data, status) => {
+                    window.myCountry = "Bangladesh"
+                    this.getLAtestByCountry("Bangladesh");
                     console.log("Request failed", data, status);
                 });
             }
