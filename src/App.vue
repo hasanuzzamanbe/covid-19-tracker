@@ -61,40 +61,6 @@
                         </li>
                     </ul>
                     <!-- sidebar menu end-->
-
-                    <div class="sidebar-latest" v-if="lastUpdate">
-                        <h3 style="color: #909399;">Your Country Latest</h3> <img v-if="countryflag" width="70px" :src="countryflag"/>
-                        <el-col class="info-response">
-                            <hr style="width:30%;" />
-                            <span class="info-title-white">Country:</span>
-                            <span class="info-value">{{lastUpdate.country_name}}</span>
-                            <br />
-                            <span class="info-title-white">Total Cases:</span>
-                            <span class="info-value">{{lastUpdate.total_cases}}</span>
-                            <br />
-                            <span class="info-title-white">New Cases:</span>
-                            <span class="info-value">{{lastUpdate.new_cases || 'update soon'}}</span>
-                            <br />
-                            <span class="info-title-white">Active Cases:</span>
-                            <span class="info-value">{{lastUpdate.active_cases}}</span>
-                            <br />
-                            <span class="info-title-white">Total Death:</span>
-                            <span class="info-value">{{lastUpdate.total_deaths}}</span>
-                            <br />
-                            <span class="info-title-white">New Death:</span>
-                            <span class="info-value">{{lastUpdate.new_deaths || 'update soon'}}</span>
-                            <br />
-                            <span class="info-title-white">Recovered:</span>
-                            <span class="info-value">{{lastUpdate.total_recovered}}</span>
-                            <br />
-                            <span class="info-title-white">Criticals:</span>
-                            <span class="info-value">{{lastUpdate.serious_critical}}</span>
-                            <br />
-                            <span class="info-title-white">Cases per 1M:</span>
-                            <span class="info-value">{{lastUpdate.total_cases_per1m}}</span>
-                            <br />
-                        </el-col>
-                    </div>
                 </div>
             </aside>
             <!--sidebar end-->
@@ -130,10 +96,8 @@ export default {
             tips: false,
             urlImage: "",
             time: {},
-            countryflag: null,
             country: null,
             loading: false,
-            lastUpdate: null,
             api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/",
             headers: {
                 "X-RapidAPI-Key":
@@ -150,43 +114,6 @@ export default {
         showMyCountryData() {
             if (this.$route.name !== "GetYourCountry")
                 this.$router.push("my-country");
-        },
-        getIpLocation() {
-            if(window.myCountry) {
-                this.getLAtestByCountry(window.myCountry);
-            }else {
-                fetch("https://api.ipgeolocation.io/ipgeo?apiKey=b8ee58e19922458ba3fe3081e146103f")
-                .then(res => res.json())
-                .then(response => {
-                    if (response.country_name && response.country_name !== "") {
-                        this.getLAtestByCountry(response.country_name);
-                        window.myCountry = response.country_name;
-                        window.countryflag = this.countryflag = response.country_flag;
-                    }
-                })
-                .catch((data, status) => {
-                    window.myCountry = "Bangladesh"
-                    this.getLAtestByCountry("Bangladesh");
-                    console.log("Request failed", data, status);
-                });
-            }
-            
-        },
-        getLAtestByCountry(country) {
-            let path = "latest_stat_by_country.php?country=" + country;
-            fetch(this.api + path, {
-                method: "get",
-                headers: this.headers
-            })
-                .then(response => {
-                    return response.json();
-                })
-                .then(json => {
-                    this.lastUpdate = json.latest_stat_by_country[0];
-                })
-                .catch(function(error) {
-                    console.log("Request failed", error);
-                });
         },
         getInstruction() {
             this.loading = true;
@@ -225,9 +152,7 @@ export default {
         }
     },
     mounted() {
-        // this.getIpLocation();
         this.currentTime();
-        window.myCountry = "Bangladesh";
     }
 };
 </script>
