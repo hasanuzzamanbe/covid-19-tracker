@@ -693,3 +693,28 @@ span.info-title-white {
 .case-own th {
     padding: 17px;
 }
+
+.ul-with-bullet {
+   list-style: none;
+    border: 1px solid #ebeef5;
+    padding: 3px 18px;
+    border-radius: 9px;
+}
+
+.ul-with-bullet .fstli::before {
+  content: "■  ";
+  color: #409eff;
+  font-size: 20px;
+}
+.ul-with-bullet .ndli::before {
+    content: "■ ";
+    color: #e6a23c;
+    font-size: 20px;
+}
+table.case-own tr td {
+    font-size: 16px;
+    font-weight: 700;
+}
+table.case-own-2 th {
+    padding: 15px 0px 0px 22px;
+}
