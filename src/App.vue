@@ -3,7 +3,10 @@
         <div id="main-wrapper">
             <!--header start-->
             <header class="header black-bg">
-                <span id="clock" class="goright">{{this.time.hour+':'+this.time.min+':'+ this.time.sec}}</span>
+                <span
+                    id="clock"
+                    class="goright"
+                >{{this.time.hour+':'+this.time.min+':'+ this.time.sec}}</span>
                 <div class="sidebar-toggle-box">
                     <div
                         class="fa fa-bars tooltips"
@@ -61,6 +64,18 @@
                         </li>
                     </ul>
                     <!-- sidebar menu end-->
+
+                    <div class="sidebar-latest">
+                        <img v-if="flag" width="70px" :src="flag" />
+                        <el-col class="info-response">
+                            <hr style="width:30%;" />
+                            <span class="info-title-white">Hello !</span>
+                            <span v-if="country || state">You are from</span>
+                            <span v-if="country || state" class="info-value">{{state}}, {{country}}</span>
+                            <span>There are many covid-19 cases in your country which is increasing day by day. Please stay home, wash your hands using an alcohol based rub frequently and not touching your face.</span>
+                            <br />
+                        </el-col>
+                    </div>
                 </div>
             </aside>
             <!--sidebar end-->
@@ -97,12 +112,15 @@ export default {
             urlImage: "",
             time: {},
             country: null,
+            state: null,
+            flag: null,
             loading: false,
+            lastUpdate: null,
             api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/",
             headers: {
                 "X-RapidAPI-Key":
                     "d5a7a67247msh00ac5e296fd8222p1fea22jsnf4c137fa39f5",
-                "X-RapidAPI-Host": "coronavirus-monitor.p.rapidapi.com",
+                "X-RapidAPI-Host": "coronavirus-monitor.p.rapidapi.com"
             }
         };
     },
@@ -144,14 +162,14 @@ export default {
             this.time = {
                 hour,
                 min,
-                sec,
-            }
-            setTimeout(()=> {
+                sec
+            };
+            setTimeout(() => {
                 this.currentTime();
             }, 1000); /* setting timer */
         }
     },
-    mounted() {
+   mounted() {
         this.currentTime();
     }
 };

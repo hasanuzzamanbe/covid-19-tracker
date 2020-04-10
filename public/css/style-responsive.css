@@ -4,9 +4,9 @@
     .header {
         position: absolute;
     }
-.sidebar-latest {
-    display:none;
-}
+    .sidebar-latest {
+        display:none;
+    }
     /*sidebar*/
 
     #sidebar {
@@ -111,6 +111,23 @@
         float: right;
     }
 }
+@media (min-width:680px) {
+
+    ul#nav-accordion {
+        border: 1px solid #e3eaff;
+        border-radius: 12px;
+        padding: 15px;
+        margin: 22px 0px 12px 5px;
+    }
+}
+
+@media screen and (max-width: 1274px) and (min-width: 750px) {
+.case-own {
+    font-size: 10px;
+}
+}
+
+
 
 
 

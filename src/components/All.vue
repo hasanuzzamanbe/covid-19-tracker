@@ -307,6 +307,7 @@ export default {
                             response.country_name !== ""
                         ) {
                             window.myCountry = response.country_name;
+                            window.userRes = response;
                         }
                     })
                     .catch((data, status) => {

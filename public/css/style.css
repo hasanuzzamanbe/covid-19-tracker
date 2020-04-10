@@ -642,6 +642,11 @@ span.info-title {
 }
 .info-response {
     font-family: monospace;
+    border: 1px solid #e3eaff;
+    border-radius: 12px;
+    margin-left: 5px;
+    padding: 15px;
+    min-height: 317px;
 }
 span.info-title-white {
     color: #301616
