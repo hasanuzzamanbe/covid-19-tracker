@@ -23,7 +23,8 @@ import {
   Loading,
   Carousel,
   CarouselItem,
-  Image
+  Image,
+  Progress
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -46,6 +47,7 @@ Vue.use(Loading);
 Vue.use(CarouselItem);
 Vue.use(Carousel);
 Vue.use(Image);
+Vue.use(Progress);
 Vue.config.productionTip = false
 
 

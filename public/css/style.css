@@ -220,12 +220,11 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #cdd0d9;
+    background: #f9faff;
 }
 
 .wrapper {
     display: inline-block;
-    margin-top: 60px;
     padding-left: 15px;
     padding-right: 15px;
     padding-bottom: 15px;
@@ -655,4 +654,42 @@ span.info-title-white {
     color: #439e99;
     font-family: monospace;
     font-size: 23px;
+}
+.first-row.el-row {
+    padding: 10px;
+}
+
+.border-shadow, .border-shadow-right {
+    padding: 10px;
+    border: 1px solid #e2eaff;
+    border-radius: 20px;
+}
+.border-shadow {
+    margin:12px;
+}
+.border-shadow-right {
+    margin-top:12px;
+}
+
+.block-cases { 
+      margin: 16px auto;
+      padding: 0 20px;
+    }
+.block-cases .grid {
+    display: flex;
+    justify-content: space-between;
+}
+.color-red {
+    color:#aa2e2e;
+}
+
+.color-green {
+    color: green;
+}
+
+.color-yellow {
+    color: rgb(167, 167, 19);
+}
+.case-own th {
+    padding: 17px;
 }

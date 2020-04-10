@@ -85,7 +85,7 @@ export default {
         }
     },
     mounted() {
-        this.getCasesByCountry(this.$route.params.country);
+        // this.getCasesByCountry(this.$route.params.country);
     }
 };
 </script>

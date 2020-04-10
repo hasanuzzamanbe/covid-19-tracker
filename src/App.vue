@@ -225,8 +225,9 @@ export default {
         }
     },
     mounted() {
-        this.getIpLocation();
+        // this.getIpLocation();
         this.currentTime();
+        window.myCountry = "Bangladesh";
     }
 };
 </script>
@@ -236,8 +237,6 @@ export default {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
 }
 </style>

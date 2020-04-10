@@ -116,7 +116,7 @@ export default {
         }
     },
     mounted() {
-        this.getIpLocation();
+        // this.getIpLocation();
     }
 };
 </script>
