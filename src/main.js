@@ -24,7 +24,10 @@ import {
   Carousel,
   CarouselItem,
   Image,
-  Progress
+  Progress,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -48,6 +51,10 @@ Vue.use(CarouselItem);
 Vue.use(Carousel);
 Vue.use(Image);
 Vue.use(Progress);
+Vue.use(Dropdown);
+Vue.use(DropdownItem);
+Vue.use(DropdownMenu);
+
 Vue.config.productionTip = false
 
 

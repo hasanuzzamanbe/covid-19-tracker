@@ -26,6 +26,71 @@
                     </div>
                 </div>
                 <!-- /row -->
+                <div class="border-shadow">
+                    <h4 class="fantasy goleft">
+                        <i class="el-icon-location-outline"></i>
+                        Coronavirus Cases-
+                        {{specCountry.country_name}}
+                    </h4>
+
+                    <!-- <div class=""> -->
+
+                    <table class="case-own">
+                        <tr>
+                            <th>CONFIRMED</th>
+                            <th>RECOVERED</th>
+                            <th>DEATHS</th>
+                        </tr>
+                        <tr>
+                            <td>{{specCountry.total_cases}}</td>
+                            <td>{{specCountry.total_recovered}}</td>
+                            <td>{{specCountry.total_deaths}}</td>
+                        </tr>
+                    </table>
+                    <div class style="width:90%;">
+                        <p
+                            class="goleft"
+                            style="font-size: 11px;margin-top: 13px;padding-left: 15px;"
+                        >
+                            The ratio of
+                            <span
+                                style="color:blue;"
+                            >Recovery ({{recoveryOwn.recPercent}}%) and Deaths ({{recoveryOwn.deathPercent}}%)</span>
+                            in {{specCountry.country_name}}
+                        </p>
+                    </div>
+                    <table class="case-own-2">
+                        <tr>
+                            <th>
+                                Currently infected
+                                <br />patients
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <strong
+                                    style="color: #d12e2e;font-size: 23px;"
+                                >{{specCountry.active_cases}}</strong>
+                            </td>
+                            <td>
+                                <ul class="ul-with-bullet goleft">
+                                    <li class="fstli">
+                                        New Cases
+                                        <span
+                                            style="margin-left:22px;font-weight:bold;"
+                                        >{{specCountry.new_cases}}</span>
+                                    </li>
+                                    <li class="ndli">
+                                        New Deaths
+                                        <span
+                                            style="margin-left:22px;font-weight:bold;"
+                                        >{{specCountry.new_deaths}}</span>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
             </section>
         </section>
         <!--main content end-->
@@ -43,6 +108,7 @@ export default {
             urlImage: "",
             tips: false,
             loading: false,
+            specCountry: {},
             api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/",
             headers: {
                 "X-RapidAPI-Key":
@@ -54,6 +120,24 @@ export default {
                 connection: "Close"
             }
         };
+    },
+    computed: {
+        recoveryOwn() {
+            if (Object.values(this.specCountry).length !== 0) {
+                let all = parseFloat(this.specCountry.total_cases.replace(/,/g, ""));
+                let rec = parseFloat(
+                    this.specCountry.total_recovered.replace(/,/g, "")
+                );
+                let deaths = parseFloat(
+                    this.specCountry.total_deaths.replace(/,/g, "")
+                );
+                let recPercent = ((rec / all) * 100).toFixed(2);
+                let deathPercent = ((deaths / all) * 100).toFixed(2);
+                return { recPercent, deathPercent };
+            } else {
+                return "";
+            }
+        }
     },
     methods: {
         getLAtestByCountry(country) {
@@ -72,6 +156,7 @@ export default {
                 .then(json => {
                     this.arr = json.latest_stat_by_country;
                     this.country = json.country;
+                    this.specCountry = json.latest_stat_by_country[0];
                     this.loading = false;
                 })
                 .catch(function(error) {

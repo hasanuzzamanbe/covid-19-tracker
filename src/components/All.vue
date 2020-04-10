@@ -43,6 +43,23 @@
                                     </div>
                                 </div>
                                 <div class="border-shadow">
+                                    <el-dropdown
+                                        @command="command"
+                                        style="float:right;"
+                                        trigger="click"
+                                    >
+                                        <span style="margin-bottom:23px;" class="el-dropdown-link">
+                                            Others Top
+                                            <i class="el-icon-arrow-down el-icon--right"></i>
+                                        </span>
+                                        <el-dropdown-menu slot="dropdown">
+                                            <el-dropdown-item
+                                                v-for="(item,i) in topCountry"
+                                                :command="item.country_name"
+                                                :key="i"
+                                            >{{item.country_name}}</el-dropdown-item>
+                                        </el-dropdown-menu>
+                                    </el-dropdown>
                                     <h4 class="fantasy goleft">
                                         <i class="el-icon-location-outline"></i>
                                         Coronavirus Cases-
@@ -177,6 +194,21 @@ export default {
     data() {
         return {
             arr: [],
+            topCountry: [
+                { country_name: "China" },
+                { country_name: "Italy" },
+                { country_name: "Bangladesh" },
+                { country_name: "Canada" },
+                { country_name: "Russia" },
+                { country_name: "Spain" },
+                { country_name: "Germany" },
+                { country_name: "France" },
+                { country_name: "UK" },
+                { country_name: "Iran" },
+                { country_name: "Turkey" },
+                { country_name: "Belgium" },
+                { country_name: "Switzerland" }
+            ],
             search: "",
             worldCases: {},
             countryflag: null,
@@ -315,6 +347,9 @@ export default {
                         console.log("Request failed", data, status);
                     });
             }
+        },
+        command(country) {
+            this.getSpecificCountry(country);
         }
     },
     mounted() {

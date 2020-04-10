@@ -53,7 +53,7 @@
                                 href="javascript:;"
                             >
                                 <i class="fa fa-desktop"></i>
-                                <span>Show My country details</span>
+                                <span>Show My country history</span>
                             </a>
                         </li>
                         <li class="sub-menu">
