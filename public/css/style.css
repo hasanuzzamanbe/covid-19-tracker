@@ -35,12 +35,12 @@
     width: 210px;
     height: 100%;
     position: fixed;
-    background: #2f323a;
+    background: white;
     z-index: 34;
 }
 
 #sidebar h5 {
-	color: #f2f2f2;
+	color: #c13635;
 	font-weight: 700;
 }
 
@@ -154,11 +154,12 @@ ul.sidebar-menu li a span{
 }
 
 ul.sidebar-menu li a{
-    color: #aeb2b7;
+    color: #605656;
     text-decoration: none;
     display: block;
     padding: 15px 0 15px 10px;
-    font-size: 12px;
+    font-size: 13px;
+    font-weight:500;
     outline: none;
     -webkit-transition: all 0.3s ease;
     -moz-transition: all 0.3s ease;
@@ -218,8 +219,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #22242a;
-    border-bottom: 1px solid #393d46;
+    background: #cdd0d9;
 }
 
 .wrapper {
@@ -234,7 +234,7 @@ ul.sidebar-menu li a.active i {
 
 a.logo {
     font-size: 24px;
-    color: #f2f2f2;
+    color: #c43330;
     float: left;
     margin-top: 15px;
     text-transform: uppercase;
@@ -644,7 +644,7 @@ span.info-title {
     font-family: monospace;
 }
 span.info-title-white {
-    color: white;
+    color: #301616
 }
 
 #clock {
