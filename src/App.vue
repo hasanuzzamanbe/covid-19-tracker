@@ -63,7 +63,7 @@
                     <!-- sidebar menu end-->
 
                     <div class="sidebar-latest" v-if="lastUpdate">
-                        <h3 style="color:white;">Your Country Latest</h3> <img v-if="countryflag" width="70px" :src="countryflag"/>
+                        <h3 style="color: #909399;">Your Country Latest</h3> <img v-if="countryflag" width="70px" :src="countryflag"/>
                         <el-col class="info-response">
                             <hr style="width:30%;" />
                             <span class="info-title-white">Country:</span>

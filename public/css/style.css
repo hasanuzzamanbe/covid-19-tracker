@@ -46,6 +46,7 @@
 
 #sidebar ul li {
     position: relative;
+    list-style: none;
 }
 
 #sidebar .sub-menu > .sub li  {
