@@ -148,7 +148,7 @@ export default {
             if (this.$route.path !== path) this.$router.push(path);
         },
         showMyCountryData() {
-            if (this.$route.path !== "/my-country")
+            if (this.$route.name !== "GetYourCountry")
                 this.$router.push("my-country");
         },
         getIpLocation() {
