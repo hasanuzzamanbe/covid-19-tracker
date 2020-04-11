@@ -4,21 +4,39 @@
         <section id="main-content">
             <section class="wrapper">
                 <div class="row all-data-row-wrapper">
-                    <div v-if="!loading" class="main-chart">
+                    <div v-if="!loading" class="main-chart" style="padding:25px;">
                         <!--CUSTOM CHART START -->
-                        <div>
-                            <h3 class="fantasy">Historical data for {{country}}</h3>
-                        </div>
-                        <el-table sortable stripe fit fixed="left" :data="arr" style="width: 100%">
+                      
+                        <div class="by-date-lg-table">
+                            <div>
+                                <h3 class="fantasy">Historical data for {{country}}</h3>
+                            </div>
+
+                            <el-table
+                            class="case-all-table"
+                            stripe
+                            height="615"
+                            sortable
+                            fit
+                            fixed="left"
+                            :data="arr"
+                            style="width: 100%"
+                        >
                             <el-table-column fixed label="Record date" prop="record_date"></el-table-column>
                             <el-table-column sortable label="Total cases" prop="total_cases"></el-table-column>
                             <el-table-column sortable label="New cases" prop="new_cases"></el-table-column>
                             <el-table-column sortable label="Active cases" prop="active_cases"></el-table-column>
                             <el-table-column sortable label="total_deaths" prop="total_deaths"></el-table-column>
                             <el-table-column sortable label="New deaths" prop="new_deaths"></el-table-column>
-                            <el-table-column sortable label="Total recovered" prop="total_recovered"></el-table-column>
+                            <el-table-column
+                                sortable
+                                label="Total recovered"
+                                prop="total_recovered"
+                            ></el-table-column>
                             <el-table-column sortable label="Cases per 1M" prop="total_cases_per1m"></el-table-column>
                         </el-table>
+                        </div>
+                        
                     </div>
                     <div v-else>
                         <img
@@ -27,8 +45,8 @@
                             alt="Loading.."
                         />
                         <h4>Wait, first wash your hand...</h4>
-                        <br/>
-                        <img src="../assets/ajax-loader.gif"/>
+                        <br />
+                        <img src="../assets/ajax-loader.gif" />
                     </div>
                 </div>
                 <!-- /row -->

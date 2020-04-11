@@ -561,3 +561,8 @@ table.case-own-2 th {
     border: 1px solid #e6ecff;
     border-radius: 23px;
 }
+.by-date-lg-table {
+    border: 1px solid #e3eaff;
+    padding: 12px;
+    border-radius: 23px;
+}
