@@ -63,7 +63,7 @@ export default {
         return {
             arr: [],
             country: "",
-            loading: true,
+            loading: false,
             api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
         };
     },
