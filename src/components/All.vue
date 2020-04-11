@@ -20,6 +20,18 @@
                                         <span class="goleft">Recovery rate</span>
                                         <el-progress :percentage="getPercent" :format="format"></el-progress>
                                     </div>
+                                    <div class style="width:90%;">
+                                        <p
+                                            class="goleft"
+                                            style="font-size: 11px;margin-top: 13px;padding-left: 15px;"
+                                        >
+                                            The ratio of
+                                            <span
+                                                style="color:blue;"
+                                            >Recovery ({{getPercent}}%) and Deaths ({{deathPercent}}%)</span>
+                                            in worldwide
+                                        </p>
+                                    </div>
 
                                     <div class="block-cases">
                                         <div class="grid">
@@ -143,8 +155,9 @@
                                     <el-button slot="append" icon="el-icon-search"></el-button>
                                 </el-input>
                                 <el-table
+                                    class="case-all-table"
                                     stripe
-                                    height="555"
+                                    height="615"
                                     :data="arr.filter(item => !search || item.country_name.toLowerCase().includes(search.toLowerCase()))"
                                     style="width: 100%"
                                 >
@@ -161,11 +174,15 @@
                                             <el-button-group>
                                                 <el-button
                                                     size="mini"
+                                                    type="primary"
+                                                    plain
                                                     icon="el-icon-view"
                                                     @click="getlatestByCountry(scope.row.country_name)"
                                                 ></el-button>
                                                 <el-button
                                                     size="mini"
+                                                    type="warning"
+                                                    plain
                                                     icon="el-icon-monitor"
                                                     @click="getCasesByCountry(scope.row.country_name)"
                                                 ></el-button>
@@ -229,13 +246,26 @@ export default {
     computed: {
         getPercent() {
             if (Object.values(this.worldCases).length !== 0) {
-                let all = parseFloat(
+                let rec = parseFloat(
                     this.worldCases.total_recovered.replace(/,/g, "")
                 );
-                let rec = parseFloat(
+                let all = parseFloat(
                     this.worldCases.total_cases.replace(/,/g, "")
                 );
-                return parseFloat(((all / rec) * 100).toFixed(2));
+                return parseFloat(((rec / all) * 100).toFixed(2));
+            } else {
+                return 0;
+            }
+        },
+        deathPercent() {
+            if (Object.values(this.worldCases).length !== 0) {
+                let death = parseFloat(
+                    this.worldCases.total_deaths.replace(/,/g, "")
+                );
+                let all = parseFloat(
+                    this.worldCases.total_cases.replace(/,/g, "")
+                );
+                return parseFloat(((death / all) * 100).toFixed(2));
             } else {
                 return 0;
             }

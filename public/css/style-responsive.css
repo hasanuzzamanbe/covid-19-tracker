@@ -1,5 +1,8 @@
 
 @media (max-width: 768px) {
+    .el-table {
+        height:400px !important;
+    }
 
     .header {
         position: absolute;

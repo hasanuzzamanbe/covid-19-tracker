@@ -3,8 +3,8 @@
         <!-- main-content -->
         <section id="main-content">
             <section class="wrapper">
-                <div class="row all-data-row-wrapper">
-                    <div v-loading="loading" class="main-container">
+                <div class="row all-data-row-wrapper" style="padding:26px;">
+                    <div v-loading="loading" class="main-container by-latest-container">
                         <!--CUSTOM CHART START -->
                         <div>
                             <h3 class="fantasy">Latest Information of {{country}}</h3>

@@ -69,11 +69,12 @@
                         <img v-if="flag" width="70px" :src="flag" />
                         <el-col class="info-response">
                             <hr style="width:30%;" />
-                            <span class="info-title-white">Hello !</span>
+                            <span class="info-title-white"><i class="el-icon-warning-outline"></i>  Hello !</span><br/>
                             <span v-if="country || state">You are from</span>
                             <span v-if="country || state" class="info-value">{{state}}, {{country}}</span>
                             <span>There are many covid-19 cases in your country which is increasing day by day. Please stay home, wash your hands using an alcohol based rub frequently and not touching your face.</span>
                             <br />
+                            <hr style="width:30%;" />
                         </el-col>
                     </div>
                 </div>
