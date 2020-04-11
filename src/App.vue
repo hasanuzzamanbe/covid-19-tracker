@@ -159,10 +159,10 @@ export default {
                 });
         },
         currentTime() {
-            var date = new Date(); /* creating object of Date class */
-            var hour = date.getHours();
-            var min = date.getMinutes();
-            var sec = date.getSeconds();
+            let date = new Date(); /* creating object of Date class */
+            let hour = date.getHours();
+            let min = date.getMinutes();
+            let sec = date.getSeconds();
             this.time = {
                 hour,
                 min,
@@ -170,7 +170,7 @@ export default {
             };
             setTimeout(() => {
                 this.currentTime();
-            }, 1000); /* setting timer */
+            }, 1000);
         }
     },
     mounted() {
@@ -178,12 +178,3 @@ export default {
     }
 };
 </script>
-
-<style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
-}
-</style>

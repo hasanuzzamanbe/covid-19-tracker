@@ -5,7 +5,6 @@
             <section class="wrapper">
                 <div class="row all-data-row-wrapper" style="padding:26px;">
                     <div v-loading="loading" class="main-container by-latest-container">
-                        <!--CUSTOM CHART START -->
                         <div>
                             <h3 class="fantasy">Latest Information of {{country}}</h3>
                         </div>
@@ -18,10 +17,6 @@
                             <el-table-column label="New deaths" prop="new_deaths"></el-table-column>
                             <el-table-column label="Total recovered" prop="total_recovered"></el-table-column>
                             <el-table-column label="Cases per 1m" prop="total_cases_per1m"></el-table-column>
-                            <el-table-column
-                                label="cases 1m/population"
-                                prop="total_cases_per_1m_population"
-                            ></el-table-column>
                         </el-table>
                     </div>
                 </div>
@@ -71,7 +66,7 @@
                                 <tr>
                                     <td>
                                         <strong
-                                            style="color: #d12e2e;font-size: 23px;"
+                                            style="color: #d12e2e;font-size: 23px;padding-left: 22px;"
                                         >{{specCountry.active_cases}}</strong>
                                     </td>
                                     <td>
@@ -115,8 +110,7 @@
                                         {{Math.abs(last24.caseStatus)}}
                                         <i
                                             v-if="last24.caseStatus < 0"
-                                            style="color:red;"
-                                            class="el-icon-bottom"
+                                            class="el-icon-bottom color-red"
                                         ></i>
                                         <i
                                             v-if="last24.caseStatus > 0"
@@ -137,8 +131,7 @@
                                         ></i>
                                         <i
                                             v-if="specCountry.new_cases > statusYesterday.new_cases"
-                                            style="color:red;"
-                                            class="el-icon-top"
+                                            class="el-icon-top color-red"
                                         ></i>
                                         <i
                                             v-if="last24.newStatus == 0 || last24.newStatus == null"
@@ -154,8 +147,7 @@
                                         ></i>
                                         <i
                                             v-if="specCountry.new_deaths > statusYesterday.new_deaths"
-                                            style="color:red;"
-                                            class="el-icon-top"
+                                            class="el-icon-top color-red"
                                         ></i>
                                         <i
                                             v-if="last24.deathStatus == 0"
@@ -164,14 +156,9 @@
                                     </td>
                                 </tr>
                             </table>
-                            <div class style="width:90%;">
-                                <p
-                                    class="goleft"
-                                    style="font-size: 11px;margin-top: 13px;padding-left: 15px;"
-                                >
-                                    <span
-                                        style="color:blue;"
-                                    >If those values are empty means todays data is not updated yet</span>
+                            <div class="bylatest-note">
+                                <p class="goleft">
+                                    <span>If those values are empty means todays data is not updated yet</span>
                                 </p>
                             </div>
                         </div>
@@ -192,14 +179,10 @@ export default {
             arr: [],
             country: "",
             urlImage: "",
-            statusYesterday: {
-                
-            },
+            statusYesterday: {},
             tips: false,
             loading: false,
-            specCountry: {
-                
-            },
+            specCountry: {},
             api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/",
             headers: {
                 "X-RapidAPI-Key":
@@ -215,25 +198,23 @@ export default {
     computed: {
         last24() {
             if (
-                Object.values(this.specCountry).length !== 0 &&
-                Object.values(this.statusYesterday).length !== 0
+                this.isLengthZero(this.specCountry) &&
+                this.isLengthZero(this.statusYesterday)
             ) {
-                let caseStatus =
-                    parseFloat(this.specCountry.total_recovered.replace(/,/g, "")) -
-                    parseFloat(
-                        this.statusYesterday.total_recovered.replace(/,/g, "")
-                    );
+                let caseStatus = this.getNumberDiff(
+                    this.specCountry.total_recovered,
+                    this.statusYesterday.total_recovered
+                );
 
-                let newStatus =
-                    parseFloat(this.specCountry.new_cases.replace(/,/g, "")) -
-                    parseFloat(
-                        this.statusYesterday.new_cases.replace(/,/g, "")
-                    );
-                let deathStatus =
-                    parseFloat(this.specCountry.new_deaths.replace(/,/g, "")) -
-                    parseFloat(
-                        this.statusYesterday.new_deaths.replace(/,/g, "")
-                    );
+                let newStatus = this.getNumberDiff(
+                    this.specCountry.new_cases,
+                    this.statusYesterday.new_cases
+                );
+
+                let deathStatus = this.getNumberDiff(
+                    this.specCountry.new_deaths,
+                    this.statusYesterday.new_deaths
+                );
 
                 return { caseStatus, newStatus, deathStatus };
             } else {
@@ -241,16 +222,10 @@ export default {
             }
         },
         recoveryOwn() {
-            if (Object.values(this.specCountry).length !== 0) {
-                let all = parseFloat(
-                    this.specCountry.total_cases.replace(/,/g, "")
-                );
-                let rec = parseFloat(
-                    this.specCountry.total_recovered.replace(/,/g, "")
-                );
-                let deaths = parseFloat(
-                    this.specCountry.total_deaths.replace(/,/g, "")
-                );
+            if (this.isLengthZero(this.specCountry)) {
+                let all = this.getExactNumber(this.specCountry.total_cases);
+                let rec = this.getExactNumber(this.specCountry.total_recovered);
+                let deaths = this.getExactNumber(this.specCountry.total_deaths);
                 let recPercent = ((rec / all) * 100).toFixed(2);
                 let deathPercent = ((deaths / all) * 100).toFixed(2);
                 return { recPercent, deathPercent };
@@ -260,6 +235,18 @@ export default {
         }
     },
     methods: {
+        getNumberDiff(num1, num2) {
+            return (
+                parseFloat(num1.replace(/,/g, "")) -
+                parseFloat(num2.replace(/,/g, ""))
+            );
+        },
+        getExactNumber(num) {
+            return parseFloat(num.replace(/,/g, ""));
+        },
+        isLengthZero(obj) {
+            return Object.values(obj).length !== 0;
+        },
         getYesterday() {
             let yesterday = new Date(Date.now() - 864e5);
             return `${yesterday.getFullYear()}-${yesterday.getMonth() +
@@ -311,5 +298,3 @@ export default {
     }
 };
 </script>
-<style scoped>
-</style>

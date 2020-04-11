@@ -16,8 +16,8 @@
 
                                     <h3 class="goleft">{{worldCases.total_cases}}</h3>
                                     <hr />
-                                    <div class style="width:90%;">
-                                        <span class="goleft">Recovery rate</span>
+                                    <div class="gocenter" style="width:90%;">
+                                        <span>Recovery rate</span>
                                         <el-progress :percentage="getPercent" :format="format"></el-progress>
                                     </div>
                                     <div class style="width:90%;">
@@ -114,7 +114,7 @@
                                         <tr>
                                             <td>
                                                 <strong
-                                                    style="color: #d12e2e;font-size: 23px;"
+                                                    style="color: #d12e2e; padding-left:22px; font-size: 23px;"
                                                 >{{specCountry.active_cases}}</strong>
                                             </td>
                                             <td>
@@ -177,14 +177,14 @@
                                                     type="primary"
                                                     plain
                                                     icon="el-icon-view"
-                                                    @click="getlatestByCountry(scope.row.country_name)"
+                                                    @click="goToDetails(scope.row.country_name,'ByLatest')"
                                                 ></el-button>
                                                 <el-button
                                                     size="mini"
                                                     type="warning"
                                                     plain
                                                     icon="el-icon-monitor"
-                                                    @click="getCasesByCountry(scope.row.country_name)"
+                                                    @click="goToDetails(scope.row.country_name, 'ByDate')"
                                                 ></el-button>
                                             </el-button-group>
                                         </template>
@@ -292,20 +292,14 @@ export default {
         format(percentage) {
             return percentage === 100 ? "Full" : `${percentage}%`;
         },
-        getlatestByCountry(country) {
+        goToDetails(country, route) {
             this.$router.push({
-                name: "ByLatest",
+                name: route,
                 params: { country: country }
             });
         },
         getAllCountry() {
             this.makeRequest("cases_by_country.php");
-        },
-        getCasesByCountry(country) {
-            this.$router.push({
-                name: "ByDate",
-                params: { country: country }
-            });
         },
         getWorldStatus() {
             let api = this.api + "worldstat.php";
@@ -390,14 +384,3 @@ export default {
     }
 };
 </script>
-
-<style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    margin-top: 60px;
-}
-</style>

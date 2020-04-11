@@ -25,7 +25,6 @@
                                     </span>
                                 </el-col>
                             </el-row>
-                            <!--CUSTOM CHART START -->
                             <el-table
                                 height="650"
                                 stripe
@@ -64,7 +63,6 @@
                         <img src="../assets/ajax-loader.gif" />
                     </div>
                 </div>
-                <!-- /row -->
             </section>
         </section>
         <!--main content end-->

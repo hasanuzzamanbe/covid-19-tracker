@@ -1,137 +1,31 @@
-
-@media (max-width: 768px) {
-    .el-table {
-        height:400px !important;
-    }
-
-    .header {
-        position: absolute;
-    }
-    .sidebar-latest {
-        display:none;
-    }
-    /*sidebar*/
-
-    #sidebar {
-        height: auto;
-        overflow: hidden;
-        position: absolute;
-        width: 100%;
-        z-index: 1001;
-    }
-
-    .all-data-row-wrapper {
-        margin-top: 260px;
-    }
-    /* body container */
-    #main-content {
-        margin: 0px!important;
-        position: none !important;
-    }
-
-    #sidebar > ul > li > a > span {
-        line-height: 35px;
-    }
-
-    #sidebar > ul > li {
-        margin: 0 10px 5px 10px;
-    }
-    #sidebar > ul > li > a {
-        height:35px;
-        line-height:35px;
-        padding: 0 10px;
-        text-align: left;
-    }
-    #sidebar > ul > li > a i{
-        /*display: none !important;*/
-    }
-
-    .mail-info, .mail-info:hover {
-        display: none !important;
-    }
-    #sidebar ul > li > a .arrow, #sidebar > ul > li > a .arrow.open {
-        margin-right: 10px;
-        margin-top: 15px;
-    }
-
-    #sidebar ul > li.active > a .arrow, #sidebar ul > li > a:hover .arrow, #sidebar ul > li > a:focus .arrow,
-    #sidebar > ul > li.active > a .arrow.open, #sidebar > ul > li > a:hover .arrow.open, #sidebar > ul > li > a:focus .arrow.open{
-        margin-top: 15px;
-    }
-
-    #sidebar > ul > li > a, #sidebar > ul > li > ul.sub > li {
-        width: 100%;
-    }
-    #sidebar > ul > li > ul.sub > li > a {
-        background: transparent !important ;
-    }
-
-    /* sidebar */
-    #sidebar {
-        margin: 0px !important;
-    }
-
-    /* sidebar collabler */
-    #sidebar .btn-navbar.collapsed .arrow {
-        display: none;
-    }
-
-    #sidebar .btn-navbar .arrow {
-        position: absolute;
-        right: 35px;
-        width: 0;
-        height: 0;
-        top:48px;
-        border-bottom: 15px solid #282e36;
-        border-left: 15px solid transparent;
-        border-right: 15px solid transparent;
-    }
-    .modal-footer .btn {
-        margin-bottom: 0px !important;
-    }
-    .btn {
-        margin-bottom: 5px;
-    }
-    .fc-header {
-        margin-bottom:0px !important;
-    }
-    /*menu icon plus minus*/
-    .dcjq-icon {
-        top: 10px;
-    }
-    ul.sidebar-menu li ul.sub li a {
-        padding: 0;
-    }
-    .img-responsive {
-        width: 100%;
-    }
-
+@media (max-width:768px){
+.el-table{height:400px!important}
+.header{position:absolute}
+.sidebar-latest{display:none}
+#sidebar{height:auto;overflow:hidden;position:absolute;width:100%;z-index:1001}
+.all-data-row-wrapper{margin-top:260px}
+#main-content{margin:0!important;position:none!important}
+#sidebar>ul>li>a>span{line-height:35px}
+#sidebar>ul>li{margin:0 10px 5px 10px}
+#sidebar>ul>li>a{height:35px;line-height:35px;padding:0 10px;text-align:left}
+#sidebar ul>li>a .arrow,#sidebar>ul>li>a .arrow.open{margin-right:10px;margin-top:15px}
+#sidebar ul>li.active>a .arrow,#sidebar ul>li>a:focus .arrow,#sidebar ul>li>a:hover .arrow,#sidebar>ul>li.active>a .arrow.open,#sidebar>ul>li>a:focus .arrow.open,#sidebar>ul>li>a:hover .arrow.open{margin-top:15px}
+#sidebar>ul>li>a,#sidebar>ul>li>ul.sub>li{width:100%}
+#sidebar>ul>li>ul.sub>li>a{background:0 0!important}
+#sidebar{margin:0!important}
+#sidebar .btn-navbar.collapsed .arrow{display:none}
+#sidebar .btn-navbar .arrow{position:absolute;right:35px;width:0;height:0;top:48px;border-bottom:15px solid #282e36;border-left:15px solid transparent;border-right:15px solid transparent}
+.modal-footer .btn{margin-bottom:0!important}
+.btn{margin-bottom:5px}
+ul.sidebar-menu li ul.sub li a{padding:0}
+.img-responsive{width:100%}
 }
-
-@media (max-width:320px) {
-
-    #top_menu .nav > li, ul.top-menu > li {
-        float: right;
-    }
+@media (max-width:320px){
+#top_menu .nav>li,ul.top-menu>li{float:right}
 }
-@media (min-width:680px) {
-
-    ul#nav-accordion {
-        border: 1px solid #e3eaff;
-        border-radius: 12px;
-        padding: 15px;
-        margin: 22px 0px 12px 5px;
-    }
+@media (min-width:680px){
+ul#nav-accordion{border:1px solid #e3eaff;border-radius:12px;padding:15px;margin:22px 0 12px 5px}
 }
-
-@media screen and (max-width: 1274px) and (min-width: 750px) {
-.case-own {
-    font-size: 10px;
+@media screen and (max-width:1274px) and (min-width:750px){
+.case-own{font-size:10px}
 }
-}
-
-
-
-
-
-

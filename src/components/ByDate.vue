@@ -5,13 +5,10 @@
             <section class="wrapper">
                 <div class="row all-data-row-wrapper">
                     <div v-if="!loading" class="main-chart" style="padding:25px;">
-                        <!--CUSTOM CHART START -->
-
                         <div class="by-date-lg-table">
                             <div>
                                 <h3 class="fantasy">Historical data for {{country}}</h3>
                             </div>
-
                             <el-table
                                 class="case-all-table"
                                 stripe
@@ -42,14 +39,13 @@
                         </div>
                     </div>
                     <div v-else>
-                        <img
-                            style="border: 1px solid #4ecdc4; border-radius: 91px;"
+                        <img class="loader-img"
                             src="../assets/loadinghand.png"
                             alt="Loading.."
                         />
-                        <h4>Wait, first wash your hand...</h4>
+                        <h4 style="text-align: center;">Wait, first wash your hand...</h4>
                         <br />
-                        <img src="../assets/ajax-loader.gif" />
+                        <img class="loader-img-2" src="../assets/ajax-loader.gif" />
                     </div>
                 </div>
                 <!-- /row -->
@@ -67,7 +63,7 @@ export default {
         return {
             arr: [],
             country: "",
-            loading: false,
+            loading: true,
             api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/"
         };
     },
@@ -77,7 +73,6 @@ export default {
                 "cases_by_particular_country.php?country=" + country
             );
         },
-
         makeRequest(path) {
             this.loading = true;
             var headers = {
