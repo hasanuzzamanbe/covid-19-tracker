@@ -106,7 +106,7 @@
 
                             <table class="case-own">
                                 <tr>
-                                    <th>CONFIRMED</th>
+                                    <th>RECOVERED</th>
                                     <th>NEW</th>
                                     <th>DEATHS</th>
                                 </tr>
@@ -114,13 +114,13 @@
                                     <td>
                                         {{Math.abs(last24.caseStatus)}}
                                         <i
-                                            v-if="specCountry.total_cases < statusYesterday.total_cases"
-                                            style="color:green;"
+                                            v-if="last24.caseStatus < 0"
+                                            style="color:red;"
                                             class="el-icon-bottom"
                                         ></i>
                                         <i
-                                            v-if="specCountry.total_cases > statusYesterday.total_cases"
-                                            style="color:red;"
+                                            v-if="last24.caseStatus > 0"
+                                            style="color:green;"
                                             class="el-icon-top"
                                         ></i>
                                         <i
@@ -192,10 +192,14 @@ export default {
             arr: [],
             country: "",
             urlImage: "",
-            statusYesterday: {},
+            statusYesterday: {
+                
+            },
             tips: false,
             loading: false,
-            specCountry: {},
+            specCountry: {
+                
+            },
             api: "https://coronavirus-monitor.p.rapidapi.com/coronavirus/",
             headers: {
                 "X-RapidAPI-Key":
@@ -215,9 +219,9 @@ export default {
                 Object.values(this.statusYesterday).length !== 0
             ) {
                 let caseStatus =
-                    parseFloat(this.specCountry.total_cases.replace(/,/g, "")) -
+                    parseFloat(this.specCountry.total_recovered.replace(/,/g, "")) -
                     parseFloat(
-                        this.statusYesterday.total_cases.replace(/,/g, "")
+                        this.statusYesterday.total_recovered.replace(/,/g, "")
                     );
 
                 let newStatus =
