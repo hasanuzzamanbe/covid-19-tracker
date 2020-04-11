@@ -214,6 +214,7 @@ export default {
             topCountry: [
                 { country_name: "China" },
                 { country_name: "Italy" },
+                { country_name: "USA" },
                 { country_name: "Bangladesh" },
                 { country_name: "Canada" },
                 { country_name: "Russia" },
