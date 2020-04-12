@@ -125,28 +125,28 @@
                                     <td>
                                         {{Math.abs(specCountry.new_cases)}}
                                         <i
-                                            v-if="specCountry.new_cases < statusYesterday.new_cases"
+                                            v-if="Math.sign(last24.newStatus) == -1"
                                             style="color:green;"
                                             class="el-icon-bottom"
                                         ></i>
                                         <i
-                                            v-if="specCountry.new_cases > statusYesterday.new_cases"
+                                            v-if="Math.sign(last24.newStatus) == 1"
                                             class="el-icon-top color-red"
                                         ></i>
                                         <i
-                                            v-if="last24.newStatus == 0 || last24.newStatus == null"
+                                            v-if="!specCountry.new_cases"
                                             class="el-icon-video-pause"
                                         ></i>
                                     </td>
                                     <td>
                                         {{Math.abs(specCountry.new_deaths)}}
                                         <i
-                                            v-if="specCountry.new_deaths < statusYesterday.new_deaths"
+                                            v-if="Math.sign(last24.deathStatus) == -1"
                                             style="color:green;"
                                             class="el-icon-bottom"
                                         ></i>
                                         <i
-                                            v-if="specCountry.new_deaths > statusYesterday.new_deaths"
+                                            v-if="Math.sign(last24.deathStatus) == 1"
                                             class="el-icon-top color-red"
                                         ></i>
                                         <i
