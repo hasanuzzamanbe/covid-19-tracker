@@ -27,7 +27,8 @@ import {
   Progress,
   Dropdown,
   DropdownItem,
-  DropdownMenu
+  DropdownMenu,
+  Notification
 } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -54,7 +55,7 @@ Vue.use(Progress);
 Vue.use(Dropdown);
 Vue.use(DropdownItem);
 Vue.use(DropdownMenu);
-
+Vue.prototype.$notify = Notification;
 Vue.config.productionTip = false
 
 

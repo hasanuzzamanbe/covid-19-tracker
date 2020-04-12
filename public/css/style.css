@@ -109,5 +109,8 @@ table.case-own-2 th{padding:15px 0 0 22px}
 .bylatest-note .goleft{font-size:11px;margin-top:13px;padding-left:15px;color:#00f}
 #app{font-family:Avenir,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;color:#2c3e50}
 div#main-wrapper{margin-top:46px}
-.loader-img,.loader-img-2{display:block;margin-left:auto;margin-right:auto}
+.loader-img, .loader-img-2{display:block;margin-left:auto;margin-right:auto}
 .loader-img{margin-top:120px;border:1px solid #4ecdc4;width:19%;max-width:180px;border-radius:91px}
+.el-notification.global-notify.right {background: #000000c7;}
+.global-notify h2.el-notification__title {color: white;}
+.global-notify p {color: white;}

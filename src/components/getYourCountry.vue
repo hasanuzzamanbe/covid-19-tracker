@@ -53,14 +53,14 @@
                         </div>
                     </div>
                     <div v-else>
-                        <img
+                        <img class="loader-img"
                             style="border: 1px solid #4ecdc4; border-radius: 91px;"
                             src="../assets/loadinghand.png"
                             alt="Loading.."
                         />
-                        <h4>Wait, first wash your hands...</h4>
+                        <h4 style="text-align:center;">Wait, first wash your hands...</h4>
                         <br />
-                        <img src="../assets/ajax-loader.gif" />
+                        <img class="loader-img-2" src="../assets/ajax-loader.gif" />
                     </div>
                 </div>
             </section>

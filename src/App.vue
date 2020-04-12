@@ -113,6 +113,7 @@ export default {
     data() {
         return {
             tips: false,
+            meImg: require("./assets/me.jpg"),
             urlImage: "",
             time: {},
             country: null,
@@ -175,6 +176,18 @@ export default {
     },
     mounted() {
         this.currentTime();
+        this.$notify({
+            dangerouslyUseHTMLString: true,
+            title: "Welcome to Covid-19 Tracker!",
+            message: `<div style="display: flex;font-family: serif;flex-wrap: inherit;">
+                <img style=";border-radius: 17px; margin: 5px 4px 0px -5px; width="70" 
+                height="70" src="${this.meImg}"/><p>Protect yourself and others from 
+                infection by washing your hands or using an alcohol based 
+                rub frequently, not touching your face.</p></div>`,
+            position: "bottom-right",
+            customClass:'global-notify',
+            duration: 8000
+        });
     }
 };
 </script>
