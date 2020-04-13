@@ -185,9 +185,13 @@ export default {
                 infection by washing your hands or using an alcohol based 
                 rub frequently, not touching your face.</p></div>`,
             position: "bottom-right",
-            customClass:'global-notify',
+            customClass: "global-notify",
             duration: 8000
         });
     }
 };
 </script>
+<style>
+@import "./styles/styles.css";
+@import "./styles/responsive.css";
+</style>
