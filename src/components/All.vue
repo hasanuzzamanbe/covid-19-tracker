@@ -171,7 +171,7 @@
                                     <el-table-column align="right" width="108">
                                         <!-- eslint-disable-next-line -->
                                         <template slot-scope="scope" label="Details">
-                                            <el-button-group>
+                                            <!-- <el-button-group> -->
                                                 <el-button
                                                     size="mini"
                                                     type="primary"
@@ -179,14 +179,15 @@
                                                     icon="el-icon-view"
                                                     @click="goToDetails(scope.row.country_name,'ByLatest')"
                                                 ></el-button>
-                                                <el-button
+                                                <!-- eslint-disable-next-line -->
+                                                <!-- <el-button
                                                     size="mini"
                                                     type="warning"
                                                     plain
                                                     icon="el-icon-monitor"
                                                     @click="goToDetails(scope.row.country_name, 'ByDate')"
                                                 ></el-button>
-                                            </el-button-group>
+                                            </el-button-group> -->
                                         </template>
                                     </el-table-column>
                                 </el-table>

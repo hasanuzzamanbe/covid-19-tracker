@@ -46,7 +46,7 @@
                                 <span>Affected Countries</span>
                             </a>
                         </li>
-                        <li class="sub-menu">
+                        <!-- <li class="sub-menu">
                             <a
                                 @click="showMyCountryData()"
                                 :class="{active: this.$route.path== '/my-country'}"
@@ -55,7 +55,7 @@
                                 <i class="fa fa-desktop"></i>
                                 <span>Show My country history</span>
                             </a>
-                        </li>
+                        </li> -->
                         <li class="sub-menu">
                             <a @click="getInstruction()" href="javascript:;">
                                 <i class="fa fa-desktop"></i>
