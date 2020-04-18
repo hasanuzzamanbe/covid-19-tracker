@@ -198,7 +198,6 @@
                         <img src="../assets/ajax-loader.gif" />
                     </div>
                 </div>
-                <!-- /row -->
             </section>
         </section>
         <!--main content end-->
