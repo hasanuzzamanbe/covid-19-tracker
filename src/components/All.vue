@@ -212,20 +212,6 @@ export default {
         return {
             arr: [],
             topCountry: [
-                { country_name: "China" },
-                { country_name: "Italy" },
-                { country_name: "USA" },
-                { country_name: "Bangladesh" },
-                { country_name: "Canada" },
-                { country_name: "Russia" },
-                { country_name: "Spain" },
-                { country_name: "Germany" },
-                { country_name: "France" },
-                { country_name: "UK" },
-                { country_name: "Iran" },
-                { country_name: "Turkey" },
-                { country_name: "Belgium" },
-                { country_name: "Switzerland" }
             ],
             search: "",
             worldCases: {},
@@ -333,7 +319,10 @@ export default {
                     this.arr = json.countries_stat.filter(data => {
                         return data.country_name !== "";
                     });
-                    // console.log(this.arr)
+                    this.arr.slice(0, 10).map((item) => {
+                        this.topCountry.push(item);
+                    });
+                    this.topCountry.push({ country_name: "Bangladesh" });
                     if (window.myCountry) {
                         this.getSpecificCountry(window.myCountry);
                     } else {
