@@ -278,7 +278,7 @@ export default {
                     }
                     this.loading = false;
                 })
-                .catch(function(error) {
+                .catch((error)=> {
                     this.loading = false;
                     console.log("Request failed", error);
                 });
