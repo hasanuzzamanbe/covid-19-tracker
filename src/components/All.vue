@@ -210,7 +210,7 @@
                         <img src="../assets/ajax-loader.gif" />
                     </div>
                 </div>
-                <el-row style="margin-top:20px;" :gutter="20">
+                <el-row v-show="!mapLoading" style="margin-top:20px;" :gutter="20">
                     <div style="margin-left:22px;">
                         <h4 class="fantasy">{{this.selectedCountry}} flow chart</h4>
                         <el-dropdown @command="command" trigger="click">
@@ -228,10 +228,10 @@
                         </el-dropdown>
                     </div>
                     <el-col style="margin-bottom: 20px;" :sm="24" :md="24" :lg="12">
-                        <canvas style="height:500px" id="covidChartTotal"></canvas>
+                        <canvas v-show="!mapLoading" style="height:500px" id="covidChartTotal"></canvas>
                     </el-col>
                     <el-col :sm="24" :md="24" :lg="12">
-                        <canvas style="height:500px" id="covidChartDeath"></canvas>
+                        <canvas v-show="!mapLoading" style="height:500px" id="covidChartDeath"></canvas>
                     </el-col>
                 </el-row>
             </section>
@@ -248,6 +248,7 @@ export default {
     data() {
         return {
             arr: [],
+            mapLoading: false,
             selectedCountry: "Bangladesh",
             topCountry: [],
             search: "",
@@ -433,6 +434,7 @@ export default {
             this.chartData.keys = [];
             this.chartData.values = [];
             this.chartData.deaths = [];
+            this.mapLoading = true;
             fetch(
                 "https://coronavirus-map.p.rapidapi.com/v1/spots/month?region=" +
                     country,
@@ -464,9 +466,11 @@ export default {
                         "death",
                         "rgba(237, 9, 120, 0.25)"
                     );
+                    this.mapLoading = false;
                 });
         },
         getCreateWorlsChart() {
+            this.mapLoading = true;
             fetch("https://coronavirus-map.p.rapidapi.com/v1/spots/summary", {
                 method: "get",
                 headers: this.countryWiseHeaders
@@ -488,6 +492,7 @@ export default {
                         "World Recovery",
                         "rgba(74, 140, 209, 0.25)"
                     );
+                    this.mapLoading = false;
                 });
         }
     },
