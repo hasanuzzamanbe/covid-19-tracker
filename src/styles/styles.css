@@ -391,6 +391,7 @@ span.info-title {
     margin-left: 5px;
     padding: 15px;
     min-height: 317px;
+    background: white;
 }
 span.info-title-white {
     color: #301616;

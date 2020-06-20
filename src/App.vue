@@ -98,7 +98,7 @@
             <!--footer start-->
             <footer class="site-footer">
                 <div class="text-right" id="copyrights">
-                    <a href="https://www.hasanuzzaman.com">by @Hasanuzzaman</a>
+                    <a target="_blank" href="https://www.hasanuzzaman.com">by @Hasanuzzaman</a>
                 </div>
             </footer>
             <!--footer end-->
