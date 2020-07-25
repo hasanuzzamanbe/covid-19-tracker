@@ -200,8 +200,9 @@
                                 </div>
                             </el-col>
                             <el-col :sm="24" :md="24" :lg="16">
-                                <div class="border-shadow">
-                                    <canvas style="max-height:300px;" id="covidChartWorld"></canvas>
+                                <div style="min-height:300px;" class="border-shadow">
+                                    <canvas v-if="!mapLoading" style="max-height:300px;" id="covidChartWorld"></canvas>
+                                    <h1 v-else style="text-align:center;" >Loading...</h1>
                                 </div>
                             </el-col>
                         </el-row>
