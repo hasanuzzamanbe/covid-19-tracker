@@ -11,7 +11,7 @@
     "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
     "element-ui": "^2.13.2",
-    "vue": "^2.6.11",
+    "vue": "^2.7.13",
     "vue-router": "^3.3.4"
   },
   "devDependencies": {

@@ -91,6 +91,18 @@
                     <el-button v-loading="loading" @click="getInstruction">Show More</el-button>
                 </div>
             </el-dialog>
+            <el-dialog visible="true" width="60%">
+                <div>
+                    <h1 style="word-break: break-word;">❌ Sorry! This project is no longer maintained by the author.</h1>
+                    <p>But you can still check the code. This project may help beginners of Vue js.
+                        <br/>
+                        Visit github: <a href="https://github.com/hasanuzzamanbe/covid-19-tracker">
+                            https://github.com/hasanuzzamanbe/covid-19-tracker
+                        </a>
+                    </p>
+                    <p style="float: right;">- Hasanuzzaman</p>
+                </div>
+            </el-dialog>
             <!-- main-content -->
             <router-view></router-view>
             <!--main content end-->
@@ -180,9 +192,9 @@ export default {
             dangerouslyUseHTMLString: true,
             title: "Welcome to Covid-19 Tracker!",
             message: `<div style="display: flex;font-family: serif;flex-wrap: inherit;">
-                <img style=";border-radius: 17px; margin: 5px 4px 0px -5px; width="70" 
-                height="70" src="${this.meImg}"/><p>Protect yourself and others from 
-                infection by washing your hands or using an alcohol based 
+                <img style=";border-radius: 17px; margin: 5px 4px 0px -5px; width="70"
+                height="70" src="${this.meImg}"/><p>Protect yourself and others from
+                infection by washing your hands or using an alcohol based
                 rub frequently, not touching your face.</p></div>`,
             position: "bottom-right",
             customClass: "global-notify",
